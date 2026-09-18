@@ -22,19 +22,43 @@ import {
   Film,
 } from "lucide-react"
 
-const experience = {
-  title: "Summer Intern - Algoleap",
-  duration: "June 2025 – July 2025",
-  location: "Remote",
-  role: "Web Scraping & Data Processing",
-  achievements: [
-    "Developed modular web scraper using Python and BeautifulSoup for company reviews from Glassdoor and AmbitionBox, processing entries with site-specific parsing logic",
-    "Implemented sentiment-based filtering using NLP techniques to identify negative reviews and structured data output in CSV/JSON formats with 95% success rate",
-    "Built robust error handling, logging system, and retry mechanisms with exponential backoff for production-ready data pipelines and anti-scraping countermeasures",
-    "Designed scalable automation scripts with modular architecture enabling easy integration of new review platforms and data sources",
-  ],
-  tech: ["Python", "BeautifulSoup", "NLP", "CSV/JSON", "Data Processing"],
-}
+const experiences = [
+  {
+    title: "Software Engineering Intern - Maruti Suzuki India Limited",
+    duration: "2026",
+    location: "On-Site",
+    role: "Full-Stack & Data Engineering",
+    achievements: [
+      "Engineered an automated Excel-to-MongoDB ETL pipeline processing 10,000+ manufacturing alarm records through REST APIs, powering a full-stack Industrial Alarm Analytics platform using Node.js, Express.js, MongoDB and JavaScript.",
+      "Designed a polyglot data architecture combining MongoDB for alarm/event data with PostgreSQL for relational manufacturing metadata, implementing schema relationships, foreign keys and SQL-based analytical queries.",
+      "Built aggregation-driven KPI dashboards with filtering, pagination and Pareto analysis for production downtime, and implemented an Isolation Forest anomaly-detection model to identify abnormal machine alarm patterns and surface potential downtime risks.",
+    ],
+    tech: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "JavaScript", "SQL", "Isolation Forest", "ETL"],
+  },
+  {
+    title: "Software Engineering Intern - AI Blocks",
+    duration: "2026",
+    location: "Remote",
+    role: "Frontend & Document Parsing",
+    achievements: [
+      "Built a large-scale document data-extraction pipeline handling 4,000+ cases per PDF using Document Anchor Graph Parsing, spatial tokenization, and graph segmentation; reached 97–99% extraction accuracy at 2–4 sec/PDF with zero OCR or LLM dependencies.",
+      "Designed and implemented modern frontend interfaces for client projects, emphasizing responsive design, performance, and user experience.",
+    ],
+    tech: ["Document Parsing", "Graph Segmentation", "Spatial Tokenization", "Frontend Development", "Responsive Design"],
+  },
+  {
+    title: "Data Engineering Intern - Algoleap",
+    duration: "2025",
+    location: "Remote",
+    role: "Web Scraping & Data Processing",
+    achievements: [
+      "Authored a modular Python/BeautifulSoup data-extraction pipeline targeting Glassdoor and AmbitionBox with site-specific parsing logic, sustaining a 95% parse success rate.",
+      "Applied NLP-based sentiment analysis to isolate negative reviews; exported validated, structured CSV/JSON output with field-level schema enforcement for downstream analysis.",
+      "Instrumented exponential-backoff retries, rotating proxy support, and structured logging.",
+    ],
+    tech: ["Python", "BeautifulSoup", "NLP", "Data Engineering", "Web Scraping"],
+  }
+]
 
 const projects = [
   {
@@ -84,6 +108,54 @@ const projects = [
     githubUrl: "#",
     rating: 4.7,
     genre: "Data Science",
+  },
+  {
+    id: 4,
+    title: "Stress Intelligence Platform",
+    tagline: "Distributed data-processing and real-time risk monitoring",
+    description:
+      "Designed a distributed data-processing pipeline handling 130K+ weekly student records with columnar Parquet partitioning, reducing analytical query latency by 60% over row-based storage. Engineered 12+ temporal entropy features and trained a class-balanced Random Forest classifier achieving 88% recall on high-risk cases. Shipped an incremental inference engine producing student-level intervention alerts in under 1 second from live input streams.",
+    tech: ["PySpark", "Spark SQL", "Parquet", "scikit-learn", "Random Forest"],
+    category: "ML Picks",
+    timeline: "2026",
+    role: "Data & ML Engineer",
+    year: "2026",
+    demoUrl: "#",
+    githubUrl: "#",
+    rating: 4.9,
+    genre: "Big Data / ML",
+  },
+  {
+    id: 5,
+    title: "Smart Waste Segregation System",
+    tagline: "Real-time computer vision waste classification",
+    description:
+      "Trained and deployed a fine-tuned YOLOv8/CNN classifier for biodegradable vs. non-biodegradable waste detection at under 100 ms per frame, running on an ESP32-CAM computer-vision pipeline. Configured a FastAPI inference server with OpenCV preprocessing and an Arduino actuation layer, enabling model updates without hardware changes.",
+    tech: ["YOLOv8", "CNN", "ESP32-CAM", "FastAPI", "OpenCV", "Arduino"],
+    category: "ML Picks",
+    timeline: "2025",
+    role: "Computer Vision Engineer",
+    year: "2025",
+    demoUrl: "#",
+    githubUrl: "#",
+    rating: 4.8,
+    genre: "Computer Vision",
+  },
+  {
+    id: 6,
+    title: "AEGIS-ZONE",
+    tagline: "Zero-Trust Workstation Security System",
+    description:
+      "Developed a full-stack Zero-Trust workstation prototype using FastAPI, Next.js, React, ESP32, and WebSockets, integrating biometric authentication and wireless intrusion detection for continuous access verification. Implemented real-time AES session key generation/invalidation using SHA3-256, live dashboard monitoring, and automated workstation lockdown upon biometric failure or unauthorized wireless threats.",
+    tech: ["FastAPI", "Next.js", "React", "ESP32", "WebSockets", "AES", "SHA3-256"],
+    category: "Web Dev Originals",
+    timeline: "2026",
+    role: "Full-Stack Security Developer",
+    year: "2026",
+    demoUrl: "#",
+    githubUrl: "#",
+    rating: 4.9,
+    genre: "Cybersecurity / Web",
   },
 ]
 
@@ -514,7 +586,7 @@ function AboutSection() {
                       Bachelor of Technology in Information Technology
                     </p>
                     <p className="text-gray-300">Vellore Institute of Technology (VIT)</p>
-                    <p className="text-gray-400">2023 – 2027 | CGPA: 8.53/10</p>
+                    <p className="text-gray-400">2023 – 2027 | CGPA: 8.75/10</p>
                   </motion.div>
                   <motion.div
                     whileHover={{ x: 5 }}
@@ -590,75 +662,80 @@ function ExperienceSection() {
             Professional Experience
           </h2>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02, y: -5 }}
-            className="bg-gradient-to-br from-gray-900/80 to-black/80 p-8 rounded-lg border border-red-900/30 backdrop-blur-sm hover:border-red-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20"
-          >
-            <div className="flex items-start space-x-4 mb-6">
-              <div className="p-2 bg-red-600/20 rounded-lg">
-                <Briefcase className="w-8 h-8 text-red-400" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
-                <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-400">
-                  <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {experience.duration}
+          <div className="space-y-8">
+            {experiences.map((exp, expIndex) => (
+              <motion.div
+                key={expIndex}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 + expIndex * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-gradient-to-br from-gray-900/80 to-black/80 p-8 rounded-lg border border-red-900/30 backdrop-blur-sm hover:border-red-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20"
+              >
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className="p-2 bg-red-600/20 rounded-lg flex-shrink-0">
+                    <Briefcase className="w-8 h-8 text-red-400" />
                   </div>
-                  <div className="flex items-center">
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {experience.location}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-2">{exp.title}</h3>
+                    <div className="flex flex-wrap items-center gap-4 mb-4 text-gray-400">
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 mr-2" />
+                        {exp.duration}
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        {exp.location}
+                      </div>
+                      <Badge className="bg-red-600/20 text-red-400 border-red-500/30">{exp.role}</Badge>
+                    </div>
                   </div>
-                  <Badge className="bg-red-600/20 text-red-400 border-red-500/30">{experience.role}</Badge>
                 </div>
-              </div>
-            </div>
 
-            <div className="mb-6">
-              <h4 className="text-white font-semibold mb-3">Key Achievements:</h4>
-              <ul className="space-y-3">
-                {experience.achievements.map((achievement, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ x: 10 }}
-                    className="flex items-start space-x-3 text-gray-300 p-3 rounded bg-red-900/5 hover:bg-red-900/10 transition-all duration-200"
-                  >
-                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                    <span className="leading-relaxed">{achievement}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+                <div className="mb-6">
+                  <h4 className="text-white font-semibold mb-3">Key Achievements:</h4>
+                  <ul className="space-y-3">
+                    {exp.achievements.map((achievement, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        whileHover={{ x: 10 }}
+                        className="flex items-start space-x-3 text-gray-300 p-3 rounded bg-red-900/5 hover:bg-red-900/10 transition-all duration-200"
+                      >
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                        <span className="leading-relaxed">{achievement}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
 
-            <div>
-              <h4 className="text-white font-semibold mb-3">Technologies Used:</h4>
-              <div className="flex flex-wrap gap-2">
-                {experience.tech.map((tech, index) => (
-                  <motion.div
-                    key={tech}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <Badge
-                      variant="outline"
-                      className="border-red-600/50 text-gray-300 hover:border-red-500 hover:bg-red-600/10 transition-colors"
-                    >
-                      {tech}
-                    </Badge>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Technologies Used:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.map((tech, index) => (
+                      <motion.div
+                        key={tech}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        <Badge
+                          variant="outline"
+                          className="border-red-600/50 text-gray-300 hover:border-red-500 hover:bg-red-600/10 transition-colors"
+                        >
+                          {tech}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </motion.section>
